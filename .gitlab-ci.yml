@@ -28,7 +28,7 @@ smoke_and_acceptance_tests:
   image: node:${NODE_VERSION}
   script:
     - yarn build-storybook --quiet
-    - yarn playwright install
+    -  yarn playwright install --with-deps
     - npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
       "npx http-server storybook-static --port 6006 --silent" \
       "npx wait-on tcp:127.0.0.1:6006 && yarn test-storybook"
