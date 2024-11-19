@@ -1,5 +1,3 @@
- 
- 
 export default function Web() {
   return (
     <>
@@ -9,12 +7,9 @@ export default function Web() {
             <h1 className="mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight dark:text-white md:text-5xl xl:text-6xl">
               Nest Grow Project
             </h1>
-     
-          
           </div>
         </div>
       </section>
-
     </>
   )
 }
