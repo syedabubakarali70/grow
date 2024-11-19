@@ -14,8 +14,6 @@ cache:
 
 before_script:
   - echo "Using Node.js version $NODE_VERSION"
-  - nvm install $NODE_VERSION
-  - nvm use $NODE_VERSION
 
 check:
   stage: check
