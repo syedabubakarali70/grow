@@ -9,6 +9,7 @@ module.exports = {
     ecmaVersion: 2021, // ECMAScript version
     sourceType: "module", // Enable ES Modules
   },
+
   rules: {
     // Disable specific Next.js warnings
     "@next/next/no-html-link-for-pages": "off",
