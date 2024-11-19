@@ -1,7 +1,12 @@
-import { expect, test } from "@playwright/test"
+import { test, expect } from "@playwright/test"
 
-test("has title", async ({ page }) => {
-  await page.goto("./")
+test.describe("Web Page", () => {
+  test("should display the correct title", async ({ page }) => {
+    // Navigate to the page where the Web component is rendered
+    await page.goto("/")
 
-  await expect(page).toHaveTitle(/Nest Grow Project/)
+    // Check if the title is rendered
+    const titleElement = page.locator("h1", { hasText: "Nest Grow Project" })
+    await expect(titleElement).toBeVisible()
+  })
 })
