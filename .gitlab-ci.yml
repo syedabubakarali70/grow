@@ -3,39 +3,29 @@ variables:
 
 stages:
   - check
-  - setup
   - test
-
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
-    - .next/cache
 
 before_script:
   - echo "Using Node.js version $NODE_VERSION"
+  - yarn install --frozen-lockfile
 
 check:
   stage: check
   image: node:${NODE_VERSION}
   script:
-    - yarn install --frozen-lockfile
     - yarn lint
     - yarn prettier
 
-   
 unit_and_integration_tests:
   stage: test
   image: node:${NODE_VERSION}
-  script: 
+  script:
     - yarn playwright install --with-deps
     - yarn test
 
 smoke_and_acceptance_tests:
   stage: test
   image: node:${NODE_VERSION}
-  services:
-    - name: node:${NODE_VERSION}
   script:
     - yarn build-storybook --quiet
     - yarn playwright install
