@@ -23,17 +23,12 @@ check:
     - yarn lint
     - yarn prettier
 
-setup:
-  stage: setup
-  image: node:${NODE_VERSION}
-  script:
-    - yarn install --frozen-lockfile
-    - yarn playwright install --with-deps
-
+   
 unit_and_integration_tests:
   stage: test
   image: node:${NODE_VERSION}
-  script:
+  script: 
+    - yarn playwright install --with-deps
     - yarn test
 
 smoke_and_acceptance_tests:
@@ -52,6 +47,7 @@ playwright_tests:
   stage: test
   image: node:${NODE_VERSION}
   script:
+    - yarn playwright install --with-deps
     - yarn playwright test
   artifacts:
     when: always
