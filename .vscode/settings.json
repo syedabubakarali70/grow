@@ -1,0 +1,10 @@
+{
+  "tailwindCSS.experimental.classRegex": [
+    ["cva(?:<[^>]*>)?(([^)]*))", "[\"'`]([^\"'`]*).*?[\"'`]", "(?:twMerge|twJoin)\\(([^\\);]*)[\\);]"]
+  ],
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#5E0135",
+    "titleBar.activeBackground": "#84014A",
+    "titleBar.activeForeground": "#FFFBFD"
+  }
+}
