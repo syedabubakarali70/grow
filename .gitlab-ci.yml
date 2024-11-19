@@ -4,6 +4,7 @@ variables:
 stages:
   - check
   - test
+  - deploy
 
 before_script:
   - echo "Using Node.js version $NODE_VERSION"
@@ -15,6 +16,7 @@ check:
   script:
     - yarn lint
     - yarn prettier
+
 
 unit_and_integration_tests:
   stage: test
@@ -44,3 +46,11 @@ playwright_tests:
     paths:
       - playwright-report/
     expire_in: 30 days
+
+deploy:
+  stage: deploy
+  image: node:${NODE_VERSION}
+  script:
+    - echo "Deploying application..."
+    - yarn build # Build the application for production
+    - echo "Deployed..."
