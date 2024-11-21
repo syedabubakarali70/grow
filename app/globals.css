@@ -8,6 +8,7 @@ body {
 
 @layer base {
   :root {
+    --font-poppins: "Poppins", sans-serif;
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
@@ -33,6 +34,13 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --lime: #CDF020;
+    --darkblue:#003B5B;
+    --yellow:#F7CF59;
+    --lightblue:#599EE0;
+    --green:#7DBF90;
+    --coral:#EC694A;
+    --light-coral: #FFCDA0;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -68,5 +76,16 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+ 
+}
+
+body {
+  font-family: var(--font-poppins);
+}
+
+@layer components{
+  .custom-container{
+    @apply w-full max-w-screen-sm lg:max-w-screen-md mx-auto px-4
   }
 }
