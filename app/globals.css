@@ -2,14 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer base {
   :root {
     --font-poppins: "Poppins", sans-serif;
-    --background: 0 0% 100%;
+    --font-poppins-extrabold: "Poppins-ExtraBold";
+    /* --background: 0 0% 100%; */
+    --background: #f5f6ff;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -34,13 +32,16 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-    --lime: #CDF020;
-    --darkblue:#003B5B;
-    --yellow:#F7CF59;
-    --lightblue:#599EE0;
-    --green:#7DBF90;
-    --coral:#EC694A;
-    --light-coral: #FFCDA0;
+    --lime: #cdf020;
+    --darkblue: #003b5b;
+    --yellow: #f7cf59;
+    --lightblue: #599ee0;
+    --blue: #2f7dc1;
+    --green: #7dbf90;
+    --darkgreen: #00885c;
+    --red: #ec694a;
+    --coral: #ff8d3f;
+    --light-coral: #ffcda0;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -75,17 +76,51 @@ body {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-darkblue;
   }
- 
+  h1 {
+    @apply scroll-m-20 text-4xl font-poppinsExtraBold tracking-tight lg:text-5xl;
+  }
+
+  h2 {
+    @apply scroll-m-20 pb-2 text-3xl font-poppinsExtraBold tracking-tight first:mt-0;
+  }
+
+  h3 {
+    @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+  }
+
+  h4 {
+    @apply scroll-m-20 text-xl font-semibold tracking-tight;
+  }
+
+  p {
+    @apply leading-5;
+  }
+
+  hr {
+    @apply border-t-[1px] border-input;
+  }
 }
 
 body {
   font-family: var(--font-poppins);
 }
 
-@layer components{
-  .custom-container{
-    @apply w-full max-w-screen-sm lg:max-w-screen-md mx-auto px-4
+@layer components {
+  .custom-container-md {
+    @apply w-full max-w-screen-sm lg:max-w-screen-md mx-auto px-4;
+  }
+  .custom-container-lg {
+    @apply w-full max-w-screen-sm lg:max-w-4xl xl:max-w-5xl mx-auto px-4 !important;
+  }
+  .home-container {
+    @apply custom-container-lg flex flex-col gap-4 relative -top-20;
+  }
+}
+
+@layer utilities {
+  .rounded-circle {
+    border-radius: 50%;
   }
 }

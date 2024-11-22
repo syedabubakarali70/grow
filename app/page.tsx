@@ -1,74 +1,58 @@
+"use client";
+
+import Filter from "@/components/Filter";
 import HeroSection from "@/components/HeroSection";
-import { Button } from "@/components/ui/button";
-import H1 from "@/components/ui/h1";
-import P from "@/components/ui/p";
+import SearchBox from "@/components/SearchBox";
+import { categories, useCategoryStore } from "@/store";
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect } from "react";
 
-const cards = [
-  {
-    src: "/homepageCards/card1.png",
-  },
-  {
-    src: "/homepageCards/card2.png",
-  },
-  {
-    src: "/homepageCards/card3.png",
-  },
-  {
-    src: "/homepageCards/card4.png",
-  },
-  {
-    src: "/homepageCards/card5.png",
-  },
-  {
-    src: "/homepageCards/card6.png",
-  },
-];
+const HomePage = () => {
+  const { setCategory } = useCategoryStore(categories => categories);
+  useEffect(() => {
+    setCategory(null);
+  }, [setCategory]);
 
-export default function Home() {
   return (
-    <main>
-      <HeroSection>
-        <H1>ECD Resource Centre!</H1>
-        <P className="text-white font-semibold">
-          Free downloads for preschool owners, managers, teachers and parents.
-        </P>
-        <P className="text-white">
-          Welcome to the Early Childhood Development (ECD) Resource Centre, a
-          helpful library of free downloadable policies, procedures, templates,
-          educational guides, classroom tools and more. These resources were
-          contributed by local ECD experts - thank you!
-        </P>
-        <Button variant="custom" className="bg-lime">
-          Access Resources Here
-        </Button>
-      </HeroSection>
-      <section className="custom-container pb-5 flex flex-col gap-6 relative -top-6">
-        <div className=" grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {cards.map((card, index) => (
-            <div key={index}>
-              <Image
-                src={card.src}
-                width={100}
-                height={200}
-                alt={`card-${index + 1}`}
-                className="rounded-lg shadow-lg w-full h-full object-cover"
-              />
+    <>
+      <HeroSection />
+      <section className="home-container">
+        <SearchBox>
+          <h2 className="text-center font-poppinsExtraBold">
+            What are you looking for today?
+          </h2>
+        </SearchBox>
+        <h2 className="text-center font-poppinsExtraBold">Categories</h2>
+        <section className="flex w-[90%] mx-auto justify-center items-start gap-8">
+          <Filter />
+          <article>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
+              {categories.map((category, index) => (
+                <Link
+                  href={`http://localhost:3000/${category.url}`}
+                  key={index}
+                  className="flex flex-col justify-center items-center bg-white rounded-xl shadow-md py-4 gap-2 px-2"
+                  onClick={() => setCategory(category)}
+                >
+                  <div
+                    className={`rounded-circle w-24 h-24 ${
+                      category.bgColor || "bg-slate-600"
+                    } p-4 mt-4`}
+                  >
+                    <div className="relative w-full h-full">
+                      <Image src={category.imagesrc} fill alt={category.name} />
+                    </div>
+                  </div>
+                  <p className="text-center font-semibold">{category.name}</p>
+                </Link>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className="flex items-center sm:justify-end sm:items-end gap-4 flex-col text-darkblue sm:text-right">
-          <P className="font-semibold">Need more support?</P>
-          <P className="max-w-lg">
-            Discover our free ECD management apps for ECD centre owners,
-            teachers and parents. These one-stop-shop mobile apps are easy to
-            use and designed for South African preschools specifically.
-          </P>
-          <Button variant="custom" className="bg-lightCoral">
-            Explore the ECD apps
-          </Button>
-        </div>
+          </article>
+        </section>
       </section>
-    </main>
+    </>
   );
-}
+};
+
+export default HomePage;

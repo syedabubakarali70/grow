@@ -1,7 +1,6 @@
 import Image from "next/image";
-import P from "./ui/p";
-import H4 from "./ui/h4";
 import { Button } from "./ui/button";
+import Giraffe from "./Giraffe";
 
 const btns1 = [
   {
@@ -24,7 +23,7 @@ const btns2 = [
   },
   {
     content: "ECD Curriculum",
-    bg: "bg-coral",
+    bg: "bg-red",
   },
 ];
 
@@ -46,14 +45,12 @@ const socials = [
 const Footer = () => {
   return (
     <footer className="relative z-20 w-full">
-      <div className="max-w-screen-lg mx-auto w-full px-4 py-10 absolute z-[-1] bottom-0 hidden xl:block left-20">
-        <Image src="/Giraffe.svg" width={500} height={400} alt="" />
-      </div>
+      <Giraffe />
       <div className="w-full bg-darkblue">
-        <div className="w-full">
-          <img src="/lime-strip.png" width={"100%"} height={50} alt="" />
+        <div className="w-full relative h-6">
+          <Image src="/lime-strip.png" fill alt="" />
         </div>
-        <div className="max-w-screen-lg mx-auto px-4 py-10 text-white ">
+        <div className="max-w-6xl mx-auto px-4 py-10 text-white ">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
             <div className="items-start flex sm:items-center lg:items-start w-[60%] lg:w-[100%]">
               <Image
@@ -65,25 +62,25 @@ const Footer = () => {
               />
             </div>
 
-            <div className="flex-1 flex flex-col gap-4 text-sm">
-              <P>
+            <div className="flex-1 flex flex-col gap-4 text-sm text-white">
+              <p className="text-inherit">
                 Grow ECD is a non-profit social enterprise. We equip and connect
                 early learning centres with the skills, support, and resources
                 they need to run successful preschools where children can
                 thrive.
-              </P>
-              <div className="flex flex-col">
-                <P>NPO number 161-786NPO</P>
-                <P>PBO number 930048936</P>
+              </p>
+              <div className="flex flex-col text-white">
+                <p className="text-inherit">NPO number 161-786NPO</p>
+                <p className="text-inherit">PBO number 930048936</p>
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
-              <H4>Stay in Touch</H4>
+              <h4 className="text-white">Stay in Touch</h4>
               {btns1.map((btn, index) => (
                 <Button
                   key={index}
-                  className={`${btn.bg} w-full`}
+                  className={`${btn.bg} w-[50%] lg:w-full`}
                   variant="custom"
                 >
                   {btn.content}
@@ -104,19 +101,19 @@ const Footer = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <H4>Quick Links</H4>
+              <h4 className="text-white">Quick Links</h4>
               {btns2.map((btn, index) => (
                 <Button
                   key={index}
-                  className={`${btn.bg} w-full`}
+                  className={`${btn.bg} w-[50%] lg:w-full`}
                   variant="custom"
                 >
                   {btn.content}
                 </Button>
               ))}
-              <P className="text-sm text-center mt-2 cursor-pointer">
+              <p className="text-sm lg:text-center mt-2 cursor-pointer">
                 Privacy Policy
-              </P>
+              </p>
             </div>
           </div>
         </div>

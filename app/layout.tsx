@@ -8,6 +8,11 @@ const poppins = localFont({
   weight: "400",
   variable: "--font-poppins",
 });
+const poppinsExtraBold = localFont({
+  src: "./fonts/Poppins/Poppins-ExtraBold.ttf",
+  weight: "800",
+  variable: "--font-poppins-extrabold",
+});
 
 export const metadata: Metadata = {
   title: "ECD",
@@ -21,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} antialiased`}>
+      <body
+        className={`${poppins.variable} ${poppinsExtraBold.variable} antialiased`}
+      >
         {children}
         <Footer />
       </body>

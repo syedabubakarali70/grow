@@ -2,22 +2,36 @@ import type { Config } from "tailwindcss";
 
 export default {
 	darkMode: ["class"],
+	safelist: [
+		'bg-coral',
+		'bg-darkgreen',
+		'bg-darkblue',
+		'bg-lime',
+		'bg-yellow',
+		'bg-lightCoral',
+		'bg-blue'
+	],
 	content: [
 		"./pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./app/**/*.{js,ts,jsx,tsx,mdx}",
+		"./app/*/**/*.{js,ts,jsx,tsx,mdx}", // Add deeper nesting explicitly if needed
 	],
 	theme: {
 		extend: {
 			colors: {
-				background: 'hsl(var(--background))',
+				// background: 'hsl(var(--background))',
+				background: 'var(--background)',
 				foreground: 'hsl(var(--foreground))',
 				lime: 'var(--lime)',
 				darkblue: 'var(--darkblue)',
 				yellow: 'var(--yellow)',
 				lightblue: 'var(--lightblue)',
+				blue: 'var(--blue)',
 				green: 'var(--green)',
+				darkgreen: 'var(--darkgreen)',
 				coral: 'var(--coral)',
+				red: 'var(--red)',
 				white: '#ffffff',
 				lightCoral: 'var(--light-coral)',
 				card: {
@@ -63,6 +77,9 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			fontFamily: {
+				poppinsExtraBold: 'var(--font-poppins-extrabold)'
 			}
 		}
 	},
