@@ -30,7 +30,7 @@ const HomePage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
               {categories.map((category, index) => (
                 <Link
-                  href={`http://localhost:3000/${category.url}`}
+                  href={`${category.url}`}
                   key={index}
                   className="flex flex-col justify-center items-center bg-white rounded-xl shadow-md py-4 gap-2 px-2"
                   onClick={() => setCategory(category)}
