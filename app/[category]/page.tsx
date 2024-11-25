@@ -95,7 +95,7 @@ const ResourceCard = ({ resource }: { resource: Resource }) => {
           <Image src={fileTypeImage[resource.fileType].src} fill alt="" />
         </div>
       </div>
-      <p>{resource.name}</p>
+      <p className="text-left">{resource.name}</p>
     </div>
   );
 };
@@ -150,40 +150,43 @@ const Page = ({ params }: { params: Promise<{ category: string }> }) => {
         </SearchBox>
         <section className="w-[90%] mx-auto flex py-4 gap-4 items-start">
           <Filter />
-          <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 px-4">
-            {resourcesList.map((resource, index) => (
-              <Dialog key={index}>
-                <DialogTrigger>
-                  <ResourceCard resource={resource} />
-                </DialogTrigger>
-                <DialogContent className="lg:custom-container-lg ">
-                  <div className="lg:px-12 lg:py-8 flex flex-col gap-8">
-                    <DialogHeader>
-                      <DialogTitle />
-                      <h2>{resource.tag}</h2>
-                      <DialogDescription>
-                        Explore fun and imaginative ways to turn simple egg
-                        boxes into unique art projects. Get creative with paint,
-                        scissors, and glue to craft colorful decorations or
-                        playful characters!
-                      </DialogDescription>
-                    </DialogHeader>
+          <div className="flex flex-col gap-4">
+            <p>Click on any of the following resources to view them</p>
+            <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 px-4">
+              {resourcesList.map((resource, index) => (
+                <Dialog key={index}>
+                  <DialogTrigger>
+                    <ResourceCard resource={resource} />
+                  </DialogTrigger>
+                  <DialogContent className="lg:custom-container-lg ">
+                    <div className="lg:px-12 lg:py-8 flex flex-col gap-8">
+                      <DialogHeader>
+                        <DialogTitle />
+                        <h2>{resource.tag}</h2>
+                        <DialogDescription>
+                          Explore fun and imaginative ways to turn simple egg
+                          boxes into unique art projects. Get creative with
+                          paint, scissors, and glue to craft colorful
+                          decorations or playful characters!
+                        </DialogDescription>
+                      </DialogHeader>
 
-                    <div className="flex justify-between w-full items-center flex-col md:flex-row gap-2">
-                      <ResourceCard resource={resource} />
-                      <div className="flex gap-2">
-                        <Button size="icon">
-                          <div className="relative w-full h-full">
-                            <Image src="/redirect.svg" fill alt="redirect" />
-                          </div>
-                        </Button>
-                        <Button>Download</Button>
+                      <div className="flex justify-between w-full items-center flex-col md:flex-row gap-2">
+                        <ResourceCard resource={resource} />
+                        <div className="flex gap-2">
+                          <Button size="icon">
+                            <div className="relative w-full h-full">
+                              <Image src="/redirect.svg" fill alt="redirect" />
+                            </div>
+                          </Button>
+                          <Button>Download</Button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
-            ))}
+                  </DialogContent>
+                </Dialog>
+              ))}
+            </div>
           </div>
         </section>
         <div className="w-full h-20 md:h-32 relative bg-white">
