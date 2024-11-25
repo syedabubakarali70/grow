@@ -7,54 +7,56 @@ export type Category = {
     url: string
 }
 
+const url = '/categories'
+
 export const categories: Category[] = [
     {
         name: "Policies & Procedures",
         imagesrc: "/categories/policy.svg",
         bgColor: "bg-yellow",
-        url: '/policies-and-procedures'
+        url: `${url}/policies-and-procedures`
     },
     {
         name: "Forms & Templates",
         imagesrc: "/categories/forms.svg",
         bgColor: "bg-green",
-        url: '/forms-and-templates'
+        url: `${url}/forms-and-templates`
     },
     {
         name: "Professional Development",
         imagesrc: "/categories/professional.svg",
         bgColor: "bg-coral",
-        url: '/professional-development'
+        url: `${url}/professional-development`
     },
     {
         name: "Registering your Centre",
         imagesrc: "/categories/register.svg",
         bgColor: "bg-darkgreen",
-        url: '/registering-center'
+        url: `${url}/registering-center`
     },
     {
         name: "How to use the GROW App",
         imagesrc: "/categories/howToUse.svg",
         bgColor: "bg-blue",
-        url: '/use'
+        url: `${url}/use`
     },
     {
         name: "Marketing your ECD",
         imagesrc: "/categories/marketing.svg",
         bgColor: "bg-lightCoral",
-        url: '/marketing'
+        url: `${url}/marketing`
     },
     {
         name: "Early Learning",
         imagesrc: "/categories/learning.svg",
         bgColor: "bg-lime",
-        url: '/learning'
+        url: `${url}/learning`
     },
     {
         name: "Forms & Templates",
         imagesrc: "/categories/forms.svg",
         bgColor: "bg-green",
-        url: '/forms-and-templates'
+        url: `${url}/forms-and-templates`
     },
 ];
 

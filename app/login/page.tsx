@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
+import { redirect } from "next/navigation";
 import {
   Form,
   FormControl,
@@ -29,6 +29,8 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useUserStore } from "@/store";
+import { useEffect } from "react";
 
 const padding = "px-2 md:px-4 lg:px-12";
 
@@ -77,12 +79,19 @@ const FormSchema = z.object({
 });
 
 const Page = () => {
+  const { isLoggedIn, setIsLoggedIn } = useUserStore(state => state);
+  useEffect(() => {
+    console.log("Isloggedin : ", isLoggedIn);
+  }, [isLoggedIn]);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log(data);
+    setIsLoggedIn(true);
+    document.cookie = "isLoggedIn=true; path=/; max-age=86400";
+    redirect("/categories");
   }
   return (
     <>

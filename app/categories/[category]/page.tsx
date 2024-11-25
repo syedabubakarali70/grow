@@ -107,7 +107,7 @@ const Page = ({ params }: { params: Promise<{ category: string }> }) => {
   useEffect(() => {
     params.then(resolvedParams => {
       setCategory(
-        categories.find(c => c.url === `/${resolvedParams.category}`)
+        categories.find(c => c.url === `/categories/${resolvedParams.category}`)
       );
     });
   }, [params]);
@@ -135,7 +135,7 @@ const Page = ({ params }: { params: Promise<{ category: string }> }) => {
           <Link href={"/"}>
             <ArrowLeft />
           </Link>
-          <Link href={"/"}>Home</Link>
+          <Link href={"/categories"}>Home</Link>
           <p>/</p>
           {category && <Link href={category?.url}>{category.name}</Link>}
         </div>
