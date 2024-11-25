@@ -1,7 +1,6 @@
 "use client";
-
-import Filter from "@/components/Filter";
-import HeroSection from "@/components/HeroSection";
+import { LargeScreenFilter, MobileScreenFilter } from "@/components/Filter";
+import HeroSection, { Logo } from "@/components/HeroSection";
 import SearchBox from "@/components/SearchBox";
 import { categories, useCategoryStore } from "@/store";
 import Image from "next/image";
@@ -18,14 +17,18 @@ const HomePage = () => {
     <>
       <HeroSection />
       <section className="home-container">
+        <Logo />
         <SearchBox>
           <h2 className="text-center font-poppinsExtraBold">
             What are you looking for today?
           </h2>
         </SearchBox>
-        <h2 className="text-center font-poppinsExtraBold">Categories</h2>
+        <div className="flex justify-between md:justify-center items-baseline">
+          <h2 className="font-poppinsExtraBold">Categories</h2>
+          <MobileScreenFilter />
+        </div>
         <section className="flex w-[90%] mx-auto justify-center items-start gap-8">
-          <Filter />
+          <LargeScreenFilter />
           <article>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
               {categories.map((category, index) => (

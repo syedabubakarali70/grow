@@ -6,18 +6,48 @@ import {
   fileTypes,
   tags,
 } from "@/store";
-// import {
-//   Drawer,
-//   DrawerClose,
-//   DrawerContent,
-//   DrawerDescription,
-//   DrawerFooter,
-//   DrawerHeader,
-//   DrawerTitle,
-//   DrawerTrigger,
-// } from "@/components/ui/drawer"
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 
-// import { ListFilter } from "lucide-react";
+import { ListFilter } from "lucide-react";
+import { Button } from "./ui/button";
+
+export const MobileScreenFilter = () => {
+  return (
+    <Drawer direction="left">
+      <DrawerTrigger className="md:hidden">
+        <ListFilter />
+      </DrawerTrigger>
+      <DrawerContent className="min-h-svh max-w-sm">
+        <DrawerHeader />
+        <DrawerTitle />
+        <Filter />
+        <DrawerFooter>
+          <DrawerClose asChild>
+            <Button variant="outline" className="bg-lime">
+              Close
+            </Button>
+          </DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
+  );
+};
+
+export const LargeScreenFilter = () => {
+  return (
+    <aside className="bg-white rounded-lg  py-2 shadow-lg hidden md:block">
+      <Filter />
+    </aside>
+  );
+};
 
 const Filter = () => {
   const { resource, fileType, setResource, setFileType } = useFiltersStore(
@@ -26,7 +56,7 @@ const Filter = () => {
 
   const { tag, setTag } = useTagsStore(tags => tags);
   return (
-    <aside className="bg-white rounded-lg  py-2 shadow-lg hidden md:block">
+    <>
       <p className="text-center mb-2 text-lg font-semibold">Filters</p>
       <hr />
       <div className="px-4 py-2 flex flex-col gap-1">
@@ -75,7 +105,7 @@ const Filter = () => {
           </div>
         ))}
       </div>
-    </aside>
+    </>
   );
 };
 

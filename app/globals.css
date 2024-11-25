@@ -115,7 +115,7 @@ body {
     @apply w-full max-w-screen-sm lg:max-w-4xl xl:max-w-5xl mx-auto px-4 !important;
   }
   .home-container {
-    @apply custom-container-lg flex flex-col gap-4 relative -top-20;
+    @apply custom-container-lg flex flex-col gap-4 relative -top-60 md:-top-24;
   }
 }
 

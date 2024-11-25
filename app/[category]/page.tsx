@@ -1,6 +1,6 @@
 "use client";
-import Filter from "@/components/Filter";
-import HeroSection from "@/components/HeroSection";
+import { LargeScreenFilter, MobileScreenFilter } from "@/components/Filter";
+import HeroSection, { Logo } from "@/components/HeroSection";
 import SearchBox from "@/components/SearchBox";
 import { categories } from "@/store";
 import { Category } from "@/store/categoryStore";
@@ -17,6 +17,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 type Resource = {
   name: string;
@@ -128,6 +130,15 @@ const Page = ({ params }: { params: Promise<{ category: string }> }) => {
     <div>
       <HeroSection />
       <section className="home-container">
+        <Logo />
+        <div className="flex gap-2 text-white items-center">
+          <Link href={"/"}>
+            <ArrowLeft />
+          </Link>
+          <Link href={"/"}>Home</Link>
+          <p>/</p>
+          {category && <Link href={category?.url}>{category.name}</Link>}
+        </div>
         <SearchBox>
           <div className="flex  gap-4 items-center">
             <div
@@ -149,9 +160,12 @@ const Page = ({ params }: { params: Promise<{ category: string }> }) => {
           </div>
         </SearchBox>
         <section className="w-[90%] mx-auto flex py-4 gap-4 items-start">
-          <Filter />
+          <LargeScreenFilter />
           <div className="flex flex-col gap-4">
-            <p>Click on any of the following resources to view them</p>
+            <div className="flex justify-between gap-4 items-start">
+              <p>Click on any of the following resources to view them</p>
+              <MobileScreenFilter />
+            </div>
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 px-4">
               {resourcesList.map((resource, index) => (
                 <Dialog key={index}>
