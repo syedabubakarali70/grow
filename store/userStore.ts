@@ -21,10 +21,13 @@ function initializeStoreFromCookies() {
     }
 
     // Get the value of the 'isLoggedIn' cookie
-    const isLoggedInCookie = getCookieValue('isLoggedIn') === 'true';
+    if (typeof window !== 'undefined') {
 
-    // Update the Zustand store
-    useUserStore.getState().setIsLoggedIn(isLoggedInCookie);
+        const isLoggedInCookie = getCookieValue('isLoggedIn') === 'true';
+
+        // Update the Zustand store
+        useUserStore.getState().setIsLoggedIn(isLoggedInCookie);
+    }
 }
 
 
