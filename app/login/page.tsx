@@ -32,7 +32,7 @@ import { Button } from "@/components/ui/button";
 import { useUserStore } from "@/store";
 import { useEffect } from "react";
 
-const padding = "px-2 md:px-4 lg:px-12";
+const padding = "px-4 md:px-4 lg:px-12";
 
 const inputs = [
   {
