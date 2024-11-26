@@ -52,7 +52,7 @@ export default function Home() {
         <p className="text-white font-medium">Our resources partners</p>
       </HeroSection>
       <section className="custom-container-md pb-5 flex flex-col gap-6 relative -top-6">
-        <div className=" grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div className=" grid grid-cols-2 md:grid-cols-6 lg:grid-cols-6 gap-4">
           {/* <div className=" flex flex-wrap gap-4"> */}
           {cards.map((card, index) => (
             <div key={index} className="max-h-[363px]">
