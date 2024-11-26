@@ -1,0 +1,56 @@
+variables:
+  NODE_VERSION: "20"
+
+stages:
+  - check
+  - test
+  - deploy
+
+before_script:
+  - echo "Using Node.js version $NODE_VERSION"
+  - yarn install --frozen-lockfile
+
+check:
+  stage: check
+  image: node:${NODE_VERSION}
+  script:
+    - yarn lint
+    - yarn prettier
+
+
+unit_and_integration_tests:
+  stage: test
+  image: node:${NODE_VERSION}
+  script:
+    - yarn playwright install --with-deps
+    - yarn test
+
+smoke_and_acceptance_tests:
+  stage: test
+  image: node:${NODE_VERSION}
+  script:
+    - yarn build-storybook --quiet
+    -  yarn playwright install --with-deps
+    - npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+      "npx http-server storybook-static --port 6006 --silent" \
+      "npx wait-on tcp:127.0.0.1:6006 && yarn test-storybook"
+
+playwright_tests:
+  stage: test
+  image: node:${NODE_VERSION}
+  script:
+    - yarn playwright install --with-deps
+    - yarn playwright test
+  artifacts:
+    when: always
+    paths:
+      - playwright-report/
+    expire_in: 30 days
+
+deploy:
+  stage: deploy
+  image: node:${NODE_VERSION}
+  script:
+    - echo "Deploying application..."
+    - yarn build # Build the application for production
+    - echo "Deployed..."
