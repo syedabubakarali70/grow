@@ -25,6 +25,7 @@ type Resource = {
   fileType: FileTypes;
   resourceType: Resources;
   tag: Tags;
+  labels: string[];
 };
 
 const fileTypeImage: Record<FileTypes, { src: string; bgColor: string }> = {
@@ -34,54 +35,64 @@ const fileTypeImage: Record<FileTypes, { src: string; bgColor: string }> = {
   "Music & Sounds": { src: "/music.svg", bgColor: "bg-green" },
 };
 
+const labels = ["Arts & Crafts", "Activity", "Creative Skills"];
+
 const resources: Resource[] = [
   {
     name: "Art and creative ideas",
     fileType: "Files & Docs",
     resourceType: "App only",
     tag: "Art & Creativity",
+    labels,
   },
   {
     name: "Art and creative ideas",
     fileType: "Files & Docs",
     resourceType: "App only",
     tag: "Art & Creativity",
+    labels,
   },
   {
     name: "Fun finger gym",
     fileType: "Videos",
     resourceType: "Free",
     tag: "Cognitive Development",
+    labels,
   },
   {
     name: "Toilet roll towers",
     fileType: "Videos",
     resourceType: "App only",
     tag: "Gross Motor Skills",
+    labels,
   },
   {
     name: "Driven to discover",
     fileType: "Files & Docs",
     resourceType: "Free",
     tag: "Literacy",
+    labels,
   },
   {
     name: "Step by step show and tell",
     fileType: "Videos",
     resourceType: "Free",
     tag: "Literacy",
+    labels,
   },
   {
     name: "Driven to discover",
     fileType: "Files & Docs",
     resourceType: "Free",
     tag: "Literacy",
+    labels,
   },
   {
     name: "Songs of friendship",
     fileType: "Music & Sounds",
     resourceType: "App only",
     tag: "Recorded Rhymes",
+    labels,
   },
 ];
 
@@ -183,6 +194,16 @@ const Page = ({ params }: { params: Promise<{ category: string }> }) => {
                           paint, scissors, and glue to craft colorful
                           decorations or playful characters!
                         </DialogDescription>
+                        <div className="flex gap-4">
+                          {resource.labels.map((label, index) => (
+                            <div
+                              key={index}
+                              className="shadow-sm border rounded-sm px-6 py-1 text-sm"
+                            >
+                              {label}
+                            </div>
+                          ))}
+                        </div>
                       </DialogHeader>
 
                       <div className="flex justify-between w-full items-center flex-col md:flex-row gap-2">
@@ -195,6 +216,24 @@ const Page = ({ params }: { params: Promise<{ category: string }> }) => {
                           </Button>
                           <Button>Download</Button>
                         </div>
+                      </div>
+                      <hr className="border-black" />
+                      <div className="flex justify-end items-center gap-2">
+                        <p>
+                          Resources provided by{" "}
+                          <Link
+                            href={category?.url || "/"}
+                            className="text-blue underline underline-offset-2"
+                          >
+                            Bookdash
+                          </Link>
+                        </p>
+                        <Image
+                          src="/bookdash.png"
+                          width={80}
+                          height={50}
+                          alt="bookdash"
+                        />
                       </div>
                     </div>
                   </DialogContent>
