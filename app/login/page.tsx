@@ -33,7 +33,7 @@ import { useUserStore } from "@/store";
 import { useEffect } from "react";
 import Image from "next/image";
 
-const padding = "px-4 md:px-4 lg:px-12";
+const padding = "px-5 md:px-4 lg:px-12";
 
 const inputs = [
   {
@@ -147,7 +147,7 @@ const Page = () => {
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)}>
                 <div
-                  className={`grid grid-cols-2 lg:grid-cols-2 gap-4 ${padding} pb-4 lg:pb-8`}
+                  className={`grid grid-cols-2 lg:grid-cols-2 gap-5 ${padding} pb-4 lg:pb-8 gap-x-8`}
                 >
                   {inputs.map(input => (
                     <FormField

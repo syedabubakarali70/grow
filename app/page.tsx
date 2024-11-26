@@ -1,5 +1,5 @@
 "use client";
-import HeroSection from "@/components/HeroSection";
+import HeroSection, { Logo } from "@/components/HeroSection";
 import { Button } from "@/components/ui/button";
 import { useUserStore } from "@/store";
 import Image from "next/image";
@@ -33,6 +33,7 @@ export default function Home() {
   return (
     <>
       <HeroSection>
+        <Logo />
         <h1 className="text-white">ECD Resource Centre!</h1>
         <p className="text-white font-semibold">
           Free downloads for preschool owners, managers, teachers and parents.
@@ -54,7 +55,7 @@ export default function Home() {
         <div className=" grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {/* <div className=" flex flex-wrap gap-4"> */}
           {cards.map((card, index) => (
-            <div key={index}>
+            <div key={index} className="max-h-[363px]">
               <Image
                 src={card.src}
                 width={363}

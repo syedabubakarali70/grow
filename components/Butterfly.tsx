@@ -8,7 +8,7 @@ const Butterfly = () => {
   return (
     <>
       {pathname === "/login" && (
-        <div className="absolute z-[-1] hidden xl:block -right-52 bottom-40 ">
+        <div className="absolute z-[-1] hidden md:block md:right-0 xl:-right-36 bottom-96 lg:bottom-40 ">
           <Image src="/Butterfly.svg" width={400} height={400} alt="" />
         </div>
       )}

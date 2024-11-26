@@ -140,7 +140,7 @@ const Page = ({ params }: { params: Promise<{ category: string }> }) => {
   return (
     <div>
       <HeroSection />
-      <section className="home-container">
+      <section className="home-container md:-top-28">
         <Logo />
         <div className="flex gap-2 text-white items-center">
           <Link href={"/categories"}>
@@ -194,7 +194,7 @@ const Page = ({ params }: { params: Promise<{ category: string }> }) => {
                           paint, scissors, and glue to craft colorful
                           decorations or playful characters!
                         </DialogDescription>
-                        <div className="flex gap-4">
+                        <div className="flex gap-4  flex-wrap">
                           {resource.labels.map((label, index) => (
                             <div
                               key={index}

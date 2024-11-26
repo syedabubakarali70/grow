@@ -9,8 +9,8 @@ const Giraffe = () => {
   return (
     <>
       {(pathname === "/" || pathname === "/login") && (
-        <div className="absolute z-[-1] bottom-0 hidden xl:block -left-20 ">
-          <Image src="/Giraffe.svg" width={width} height={400} alt="" />
+        <div className="absolute z-[-1] bottom-0 hidden md:block -left-10 xl:-left-20  ">
+          <Image src="/Giraffe.svg" width={width} height={1000} alt="" />
         </div>
       )}
     </>
