@@ -48,6 +48,7 @@ export default function Home() {
             Access Resources Here
           </Button>
         </Link>
+        <p className="text-white font-medium">Our resources partners</p>
       </HeroSection>
       <section className="custom-container-md pb-5 flex flex-col gap-6 relative -top-6">
         <div className=" grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
@@ -65,7 +66,7 @@ export default function Home() {
         </div>
         <div className="flex items-center sm:justify-end sm:items-end gap-4 flex-col text-darkblue sm:text-right">
           <p className="font-semibold">Need more support?</p>
-          <p className="max-w-lg">
+          <p className="max-w-[34rem]">
             Discover our free ECD management apps for ECD centre owners,
             teachers and parents. These one-stop-shop mobile apps are easy to
             use and designed for South African preschools specifically.

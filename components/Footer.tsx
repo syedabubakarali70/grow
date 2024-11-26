@@ -45,12 +45,13 @@ const socials = [
 const Footer = () => {
   return (
     <footer className="relative z-20 w-full">
-      <Giraffe />
       <div className="w-full bg-darkblue">
         <div className="w-full relative h-6">
           <Image src="/lime-strip.png" fill alt="" />
         </div>
-        <div className="max-w-6xl mx-auto px-4 py-10 text-white ">
+        <div className="max-w-6xl mx-auto px-4 py-10 text-white relative">
+          <Giraffe />
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
             <div className="items-start flex sm:items-center lg:items-start w-[60%] lg:w-[100%]">
               <Image

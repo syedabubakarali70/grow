@@ -6,7 +6,7 @@ const HeroSection = ({ children }: { children?: React.ReactNode }) => {
       <div className="hidden absolute w-full right-0 top-1 md:flex justify-end ">
         <Image src="/favicon/favicon.svg" width={300} height={100} alt="logo" />
       </div>
-      <div className="custom-container-md pt-40 pb-10 flex flex-col gap-4 items-start">
+      <div className="custom-container-md pt-40 pb-4 flex flex-col gap-4 items-start relative z-30">
         {children}
       </div>
       ;
