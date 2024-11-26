@@ -31,6 +31,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useUserStore } from "@/store";
 import { useEffect } from "react";
+import Image from "next/image";
 
 const padding = "px-4 md:px-4 lg:px-12";
 
@@ -102,16 +103,43 @@ const Page = () => {
             showCloseButton={false}
             className="w-full max-w-screen-sm lg:max-w-4xl xl:max-w-5xl p-0 pb-4 lg:pb-12"
           >
-            <DialogHeader>
-              <div
-                className={`bg-lime ${padding}  sm:rounded-t-lg py-4 text-left flex flex-col gap-4 sm:py-8`}
-              >
+            <DialogHeader
+              className={`flex gap-2 w-full bg-lime ${padding} sm:py-8 lg:py-4 flex-row sm:rounded-t-lg py-4 text-left relative gap-0`} // Make parent container relative
+            >
+              <div className={`flex flex-col`}>
                 <DialogTitle className="hidden" />
-                <h1>Log in to access free resources </h1>
-                <p className="font-poppinsExtraBold">
+                <h2 className="text-[2.25rem]">
+                  Log in to access free resources
+                </h2>
+                <p className="font-poppinsExtraBold w-full lg:w-[95%]">
                   No need to create a password! Simply tell us more about
                   yourself so that we can show you the resources you need most.
                 </p>
+              </div>
+              <div className="w-0 lg:min-w-[230px]"></div>
+              <div className="absolute hidden lg:flex gap-[-12px]  items-end right-0 bottom-0">
+                <Image
+                  src="/Meerkat_3.png"
+                  width={100}
+                  height={200}
+                  alt="Meerkat"
+                />
+
+                <div className="relative right-6 flex items-end">
+                  <Image
+                    src="/Meerkat_2.png"
+                    width={95}
+                    height={150}
+                    alt="Meerkat"
+                  />
+                  <Image
+                    src="/Meerkat_1.png"
+                    width={70}
+                    height={100}
+                    alt="Meerkat"
+                    className="relative right-4"
+                  />
+                </div>
               </div>
               <DialogDescription />
             </DialogHeader>

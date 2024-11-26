@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
 import Giraffe from "./Giraffe";
+import Butterfly from "./Butterfly";
 
 const btns1 = [
   {
@@ -51,7 +52,7 @@ const Footer = () => {
         </div>
         <div className="max-w-6xl mx-auto px-4 py-10 text-white relative">
           <Giraffe />
-
+          <Butterfly />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
             <div className="items-start flex sm:items-center lg:items-start w-[60%] lg:w-[100%]">
               <Image
