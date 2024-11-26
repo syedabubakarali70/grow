@@ -143,7 +143,7 @@ const Page = ({ params }: { params: Promise<{ category: string }> }) => {
       <section className="home-container">
         <Logo />
         <div className="flex gap-2 text-white items-center">
-          <Link href={"/"}>
+          <Link href={"/categories"}>
             <ArrowLeft />
           </Link>
           <Link href={"/categories"}>Home</Link>
