@@ -1,6 +1,6 @@
 "use client";
 import { LargeScreenFilter, MobileScreenFilter } from "@/components/Filter";
-import HeroSection, { Logo } from "@/components/HeroSection";
+import HeroSection from "@/components/HeroSection";
 import SearchBox from "@/components/SearchBox";
 import { categories } from "@/store";
 import { Category } from "@/store/categoryStore";
@@ -140,8 +140,7 @@ const Page = ({ params }: { params: Promise<{ category: string }> }) => {
   return (
     <div>
       <HeroSection />
-      <section className="home-container md:-top-28">
-        <Logo />
+      <section className="home-container -top-28">
         <div className="flex gap-2 text-white items-center">
           <Link href={"/categories"}>
             <ArrowLeft />
@@ -170,9 +169,9 @@ const Page = ({ params }: { params: Promise<{ category: string }> }) => {
             </div>
           </div>
         </SearchBox>
-        <section className="w-[90%] mx-auto flex py-4 gap-4 items-start">
+        <section className="w-[90%] mx-auto flex  justify-between py-4 gap-4 items-start">
           <LargeScreenFilter />
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 w-full">
             <div className="flex justify-between gap-4 items-start">
               <p>Click on any of the following resources to view them</p>
               <MobileScreenFilter />

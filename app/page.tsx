@@ -1,5 +1,5 @@
 "use client";
-import HeroSection, { Logo } from "@/components/HeroSection";
+import HeroSection from "@/components/HeroSection";
 import { Button } from "@/components/ui/button";
 import { useUserStore } from "@/store";
 import Image from "next/image";
@@ -33,7 +33,6 @@ export default function Home() {
   return (
     <>
       <HeroSection>
-        <Logo />
         <h1 className="text-white">ECD Resource Centre!</h1>
         <p className="text-white font-semibold">
           Free downloads for preschool owners, managers, teachers and parents.

@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { redirect } from "next/navigation";
+import { parsePhoneNumberFromString } from "libphonenumber-js";
 import {
   Form,
   FormControl,
@@ -75,8 +76,19 @@ const FormSchema = z.object({
   }),
   phone_number: z
     .string()
-    .min(10, { message: "Mobile Number must be at least 10 digits." })
-    .regex(/^\d+$/, { message: "Mobile Number must contain only numbers." }),
+    .regex(/^\+\d+$/, {
+      message: "Phone number must start with '+' and contain only digits.",
+    }) // Ensure it starts with "+" and has only digits
+    .refine(
+      value => {
+        const phoneNumber = parsePhoneNumberFromString(value);
+        return phoneNumber?.isValid();
+      },
+      {
+        message:
+          "Invalid phone number. Ensure it includes the correct country code.",
+      }
+    ),
 });
 
 const Page = () => {

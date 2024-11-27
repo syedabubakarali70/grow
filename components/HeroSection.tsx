@@ -3,25 +3,20 @@ import clsx from "clsx";
 
 const HeroSection = ({ children }: { children?: React.ReactNode }) => {
   return (
-    <div className="w-full bg-darkblue relative md:pt-40 pb-6 min-h-56">
-      <div className="hidden absolute w-full right-0 top-1 md:flex justify-end   ">
-        <Image src="/favicon/favicon.svg" width={300} height={100} alt="logo" />
+    <div className="w-full bg-darkblue pb-6 min-h-56">
+      <div className="flex justify-end pl-4 w-full h-24">
+        <div className="relative w-full h-full max-w-72">
+          <Image src="/favicon/favicon.svg" fill alt="logo" />
+        </div>
       </div>
       <div
-        className={clsx(
-          "custom-container-md   pb-4 flex flex-col gap-4 items-start relative z-30"
-        )}
+        className={clsx({
+          "custom-container-md  pt-8 pb-4 flex flex-col gap-4 items-start relative z-30":
+            children,
+        })}
       >
         {children}
       </div>
-    </div>
-  );
-};
-
-export const Logo = () => {
-  return (
-    <div className="w-full max-w-sm relative h-24 md:hidden">
-      <Image src="/favicon/favicon.svg" fill alt="" />
     </div>
   );
 };

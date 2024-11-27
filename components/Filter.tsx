@@ -10,6 +10,7 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
+  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
@@ -28,6 +29,7 @@ export const MobileScreenFilter = () => {
       <DrawerContent className="min-h-svh max-w-sm">
         <DrawerHeader />
         <DrawerTitle />
+        <DrawerDescription />
         <Filter />
         <DrawerFooter>
           <DrawerClose asChild>
