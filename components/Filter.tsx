@@ -45,7 +45,7 @@ export const MobileScreenFilter = () => {
 
 export const LargeScreenFilter = () => {
   return (
-    <aside className="bg-white rounded-lg  py-2 shadow-lg hidden md:block">
+    <aside className="bg-white rounded-lg  py-2 shadow-lg hidden md:block self-start">
       <Filter />
     </aside>
   );

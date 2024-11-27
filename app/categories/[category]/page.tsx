@@ -1,4 +1,14 @@
 "use client";
+
+import { useEffect, useState } from "react";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import { LargeScreenFilter, MobileScreenFilter } from "@/components/Filter";
 import HeroSection from "@/components/HeroSection";
 import SearchBox from "@/components/SearchBox";
@@ -7,7 +17,8 @@ import { Category } from "@/store/categoryStore";
 import useFiltersStore, { FileTypes, Resources } from "@/store/filtersStore";
 import useTagsStore, { Tags } from "@/store/tagsStore";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -17,8 +28,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 
 type Resource = {
   name: string;
@@ -102,7 +111,7 @@ const ResourceCard = ({ resource }: { resource: Resource }) => {
       <div
         className={`${
           fileTypeImage[resource.fileType].bgColor
-        } p-4 rounded-lg  w-16 h-16`}
+        } p-4 rounded-lg w-16 h-16`}
       >
         <div className="relative w-full h-full">
           <Image src={fileTypeImage[resource.fileType].src} fill alt="" />
@@ -115,6 +124,9 @@ const ResourceCard = ({ resource }: { resource: Resource }) => {
 
 const Page = ({ params }: { params: Promise<{ category: string }> }) => {
   const [category, setCategory] = useState<Category | undefined>(undefined);
+  const [currentPage, setCurrentPage] = useState(1);
+  const resourcesPerPage = 6;
+
   useEffect(() => {
     params.then(resolvedParams => {
       setCategory(
@@ -127,7 +139,7 @@ const Page = ({ params }: { params: Promise<{ category: string }> }) => {
   const resourceType = useFiltersStore(state => state.resource);
   const tag = useTagsStore(state => state.tag);
 
-  const resourcesList = resources
+  const filteredResources = resources
     .filter(
       resource => resource.fileType === fileType || fileType === "All Types"
     )
@@ -137,6 +149,20 @@ const Page = ({ params }: { params: Promise<{ category: string }> }) => {
         resourceType === "All Resources"
     )
     .filter(resource => resource.tag === tag || tag === "All Tags");
+
+  const totalPages = Math.ceil(filteredResources.length / resourcesPerPage);
+
+  const paginatedResources = filteredResources.slice(
+    (currentPage - 1) * resourcesPerPage,
+    currentPage * resourcesPerPage
+  );
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
   return (
     <div>
       <HeroSection />
@@ -150,7 +176,7 @@ const Page = ({ params }: { params: Promise<{ category: string }> }) => {
           {category && <Link href={category?.url}>{category.name}</Link>}
         </div>
         <SearchBox>
-          <div className="flex  gap-4 items-center">
+          <div className="flex gap-4 items-center">
             <div
               className={`rounded-circle w-28 h-28 ${category?.bgColor} p-4 mt-4 hidden md:block`}
             >
@@ -169,76 +195,107 @@ const Page = ({ params }: { params: Promise<{ category: string }> }) => {
             </div>
           </div>
         </SearchBox>
-        <section className="w-[90%] mx-auto flex  justify-between py-4 gap-4 items-start">
+        <section className="w-[90%] mx-auto flex justify-between py-4 gap-4">
           <LargeScreenFilter />
-          <div className="flex flex-col gap-4 w-full">
-            <div className="flex justify-between gap-4 items-start">
-              <p>Click on any of the following resources to view them</p>
-              <MobileScreenFilter />
-            </div>
-            <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 px-4">
-              {resourcesList.map((resource, index) => (
-                <Dialog key={index}>
-                  <DialogTrigger>
-                    <ResourceCard resource={resource} />
-                  </DialogTrigger>
-                  <DialogContent className="lg:custom-container-lg ">
-                    <div className="lg:px-12 lg:py-8 flex flex-col gap-8">
-                      <DialogHeader>
-                        <DialogTitle />
-                        <h2>{resource.tag}</h2>
-                        <DialogDescription>
-                          Explore fun and imaginative ways to turn simple egg
-                          boxes into unique art projects. Get creative with
-                          paint, scissors, and glue to craft colorful
-                          decorations or playful characters!
-                        </DialogDescription>
-                        <div className="flex gap-4  flex-wrap">
-                          {resource.labels.map((label, index) => (
-                            <div
-                              key={index}
-                              className="shadow-sm border rounded-sm px-6 py-1 text-sm"
-                            >
-                              {label}
-                            </div>
-                          ))}
-                        </div>
-                      </DialogHeader>
+          <div className="flex flex-col gap-4 w-full justify-between">
+            <div className="w-full flex flex-col gap-2">
+              <div className="flex justify-between gap-4 items-start">
+                <p>Click on any of the following resources to view them</p>
+                <MobileScreenFilter />
+              </div>
+              <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 px-4">
+                {paginatedResources.map((resource, index) => (
+                  <Dialog key={index}>
+                    <DialogTrigger>
+                      <ResourceCard resource={resource} />
+                    </DialogTrigger>
+                    <DialogContent className="lg:custom-container-lg">
+                      <div className="lg:px-12 lg:py-8 flex flex-col gap-8">
+                        <DialogHeader>
+                          <DialogTitle />
+                          <h2>{resource.tag}</h2>
+                          <DialogDescription>
+                            Explore fun and imaginative ways to turn simple egg
+                            boxes into unique art projects. Get creative with
+                            paint, scissors, and glue to craft colorful
+                            decorations or playful characters!
+                          </DialogDescription>
+                          <div className="flex gap-4 flex-wrap">
+                            {resource.labels.map((label, index) => (
+                              <div
+                                key={index}
+                                className="shadow-sm border rounded-sm px-6 py-1 text-sm"
+                              >
+                                {label}
+                              </div>
+                            ))}
+                          </div>
+                        </DialogHeader>
 
-                      <div className="flex justify-between w-full items-center flex-col md:flex-row gap-2">
-                        <ResourceCard resource={resource} />
-                        <div className="flex gap-2">
-                          <Button size="icon">
-                            <div className="relative w-full h-full">
-                              <Image src="/redirect.svg" fill alt="redirect" />
-                            </div>
-                          </Button>
-                          <Button>Download</Button>
+                        <div className="flex justify-between w-full items-center flex-col md:flex-row gap-2">
+                          <ResourceCard resource={resource} />
+                          <div className="flex gap-2">
+                            <Button size="icon">
+                              <div className="relative w-full h-full">
+                                <Image
+                                  src="/redirect.svg"
+                                  fill
+                                  alt="redirect"
+                                />
+                              </div>
+                            </Button>
+                            <Button>Download</Button>
+                          </div>
+                        </div>
+                        <hr className="border-black" />
+                        <div className="flex justify-end items-center gap-2">
+                          <p>
+                            Resources provided by{" "}
+                            <Link
+                              href={category?.url || "/"}
+                              className="text-blue underline underline-offset-2"
+                            >
+                              Bookdash
+                            </Link>
+                          </p>
+                          <Image
+                            src="/bookdash.png"
+                            width={80}
+                            height={50}
+                            alt="bookdash"
+                          />
                         </div>
                       </div>
-                      <hr className="border-black" />
-                      <div className="flex justify-end items-center gap-2">
-                        <p>
-                          Resources provided by{" "}
-                          <Link
-                            href={category?.url || "/"}
-                            className="text-blue underline underline-offset-2"
-                          >
-                            Bookdash
-                          </Link>
-                        </p>
-                        <Image
-                          src="/bookdash.png"
-                          width={80}
-                          height={50}
-                          alt="bookdash"
-                        />
-                      </div>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              ))}
+                    </DialogContent>
+                  </Dialog>
+                ))}
+              </div>
             </div>
+
+            <Pagination>
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious
+                    onClick={() => handlePageChange(currentPage - 1)}
+                  />
+                </PaginationItem>
+                {Array.from({ length: totalPages }, (_, index) => (
+                  <PaginationItem key={index}>
+                    <PaginationLink
+                      onClick={() => handlePageChange(index + 1)}
+                      isActive={currentPage === index + 1}
+                    >
+                      {index + 1}
+                    </PaginationLink>
+                  </PaginationItem>
+                ))}
+                <PaginationItem>
+                  <PaginationNext
+                    onClick={() => handlePageChange(currentPage + 1)}
+                  />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
           </div>
         </section>
         <div className="w-full h-20 md:h-32 relative bg-white">

@@ -4,7 +4,7 @@ import clsx from "clsx";
 const HeroSection = ({ children }: { children?: React.ReactNode }) => {
   return (
     <div className="w-full bg-darkblue pb-6 min-h-56">
-      <div className="flex justify-end pl-4 w-full h-24">
+      <div className="ml-auto pl-4 h-24 max-w-72 ">
         <div className="relative w-full h-full max-w-72">
           <Image src="/favicon/favicon.svg" fill alt="logo" />
         </div>

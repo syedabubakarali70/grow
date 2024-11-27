@@ -28,7 +28,7 @@ const HomePage = () => {
           </div>
           <MobileScreenFilter />
         </div>
-        <section className="flex w-[90%] mx-auto justify-center items-start gap-8">
+        <section className="flex w-full xl:w-[90%] mx-auto justify-center items-start gap-8">
           <LargeScreenFilter />
           <article>
             <div className="grid grid-cols-2 xl:grid-cols-4 gap-2">

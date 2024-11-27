@@ -31,7 +31,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useUserStore } from "@/store";
-import { useEffect } from "react";
 import Image from "next/image";
 
 const padding = "px-5 md:px-4 lg:px-12";
@@ -92,10 +91,8 @@ const FormSchema = z.object({
 });
 
 const Page = () => {
-  const { isLoggedIn, setIsLoggedIn } = useUserStore(state => state);
-  useEffect(() => {
-    console.log("Isloggedin : ", isLoggedIn);
-  }, [isLoggedIn]);
+  const { setIsLoggedIn } = useUserStore(state => state);
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
@@ -109,11 +106,12 @@ const Page = () => {
   return (
     <>
       <HeroSection />
+      <div className="min-h-[28rem]"></div>
       <div className="flex-1 ">
         <Dialog open={true}>
           <DialogContent
             showCloseButton={false}
-            className="w-full max-w-screen-sm lg:max-w-4xl xl:max-w-5xl p-0 pb-4 lg:pb-12"
+            className="w-full max-w-screen-sm lg:max-w-4xl xl:max-w-[62rem] p-0 pb-4 lg:pb-12"
           >
             <DialogHeader
               className={`flex gap-2 w-full bg-lime ${padding} sm:py-8 lg:py-4 flex-row sm:rounded-t-lg py-4 text-left relative gap-0`} // Make parent container relative
