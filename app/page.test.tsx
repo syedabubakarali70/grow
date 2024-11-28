@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react"
+import "@testing-library/jest-dom"
 import Web from "./page"
 
 describe("Web Component", () => {

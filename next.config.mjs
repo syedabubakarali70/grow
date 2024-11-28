@@ -12,6 +12,9 @@ const config = withPlugins([[withBundleAnalyzer({ enabled: env.ANALYZE })]], {
       fullUrl: true,
     },
   },
+  devIndicators: {
+    appIsrStatus: false,
+  },
 })
 
 export default config
