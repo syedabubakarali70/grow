@@ -1,15 +1,15 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 import "@/styles/tailwind.css"
-import Footer from "@/components/Footer"
+import Footer from "@/shared/components/Layout/Footer"
 
 const poppins = localFont({
-  src: "./fonts/Poppins/Poppins-Regular.ttf",
+  src: "../assets/fonts/Poppins/Poppins-Regular.ttf",
   weight: "400",
   variable: "--font-poppins",
 })
 const poppinsExtraBold = localFont({
-  src: "./fonts/Poppins/Poppins-ExtraBold.ttf",
+  src: "../assets/fonts/Poppins/Poppins-ExtraBold.ttf",
   weight: "800",
   variable: "--font-poppins-extrabold",
 })

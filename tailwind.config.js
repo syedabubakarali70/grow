@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const { pick, omit } = require("lodash")
-const colors = require("tailwindcss/colors")
-const defaultTheme = require("tailwindcss/defaultTheme")
+import defaultTheme from "tailwindcss/defaultTheme"
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -13,70 +10,63 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./shared/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  safelist: [
-		'bg-coral',
-		'bg-darkgreen',
-		'bg-darkblue',
-		'bg-lime',
-		'bg-yellow',
-		'bg-lightCoral',
-		'bg-blue'
-	],
+  safelist: ["bg-coral", "bg-darkgreen", "bg-darkblue", "bg-lime", "bg-yellow", "bg-lightCoral", "bg-blue"],
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)',
-				foreground: 'hsl(var(--foreground))',
-				lime: 'var(--lime)',
-				darkblue: 'var(--darkblue)',
-				yellow: 'var(--yellow)',
-				lightblue: 'var(--lightblue)',
-				blue: 'var(--blue)',
-				green: 'var(--green)',
-				darkgreen: 'var(--darkgreen)',
-				coral: 'var(--coral)',
-				red: 'var(--red)',
-				white: '#ffffff',
-				lightCoral: 'var(--light-coral)',
-				card: {
-					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))'
-				},
-				popover: {
-					DEFAULT: 'hsl(var(--popover))',
-					foreground: 'hsl(var(--popover-foreground))'
-				},
-				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
-				},
-				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
-				},
-				muted: {
-					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))'
-				},
-				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
-				},
-				destructive: {
-					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))'
-				},
-				border: 'hsl(var(--border))',
-				input: 'hsl(var(--input))',
-				ring: 'hsl(var(--ring))',
-				chart: {
-					'1': 'hsl(var(--chart-1))',
-					'2': 'hsl(var(--chart-2))',
-					'3': 'hsl(var(--chart-3))',
-					'4': 'hsl(var(--chart-4))',
-					'5': 'hsl(var(--chart-5))'
-				},
+        background: "var(--background)",
+        foreground: "hsl(var(--foreground))",
+        lime: "var(--lime)",
+        darkblue: "var(--darkblue)",
+        yellow: "var(--yellow)",
+        lightblue: "var(--lightblue)",
+        blue: "var(--blue)",
+        green: "var(--green)",
+        darkgreen: "var(--darkgreen)",
+        coral: "var(--coral)",
+        red: "var(--red)",
+        white: "#ffffff",
+        lightCoral: "var(--light-coral)",
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        chart: {
+          1: "hsl(var(--chart-1))",
+          2: "hsl(var(--chart-2))",
+          3: "hsl(var(--chart-3))",
+          4: "hsl(var(--chart-4))",
+          5: "hsl(var(--chart-5))",
+        },
         primary: {
           50: "#eff6ff",
           100: "#dbeafe",
@@ -91,7 +81,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        poppinsExtraBold: 'var(--font-poppins-extrabold)',
+        poppinsExtraBold: "var(--font-poppins-extrabold)",
         body: [
           "Inter",
           "ui-sans-serif",
@@ -128,10 +118,10 @@ module.exports = {
         ],
       },
       borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
-			},
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
       borderWidth: {
         DEFAULT: "1px",
         0: "0",
