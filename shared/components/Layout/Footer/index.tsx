@@ -1,7 +1,7 @@
 import Image from "next/image"
-import { Button } from "@/shared/components/ui/button"
+import { Button } from "@/shared/components/ui/Button"
 import Giraffe from "@/shared/components/common/Giraffe"
-import Butterfly from "@/shared/components/common//Butterfly"
+import Butterfly from "@/shared/components/common/Butterfly"
 
 const btns1 = [
   {

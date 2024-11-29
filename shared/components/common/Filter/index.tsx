@@ -1,5 +1,6 @@
-import { Checkbox } from "@/shared/components/ui/checkbox"
-import { useFiltersStore, useTagsStore, resources, fileTypes, tags } from "@/store"
+"use client"
+import { Checkbox } from "@/shared/components/ui/Checkbox"
+import { useFiltersStore, useTagsStore, resourceTypes, fileTypes, tags } from "@/store"
 import {
   Drawer,
   DrawerClose,
@@ -9,10 +10,10 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/shared/components/ui/drawer"
+} from "@/shared/components/ui/Drawer"
 
 import { ListFilter } from "lucide-react"
-import { Button } from "@/shared/components/ui/button"
+import { Button } from "@/shared/components/ui/Button"
 
 export const MobileScreenFilter = () => {
   return (
@@ -46,7 +47,7 @@ export const LargeScreenFilter = () => {
 }
 
 const Filter = () => {
-  const { resource, fileType, setResource, setFileType } = useFiltersStore((filters) => filters)
+  const { resourceType, fileType, setResource, setFileType } = useFiltersStore((filters) => filters)
 
   const { tag, setTag } = useTagsStore((tags) => tags)
   return (
@@ -54,9 +55,9 @@ const Filter = () => {
       <p className="mb-2 text-center text-lg font-semibold">Filters</p>
       <hr />
       <div className="flex flex-col gap-1 px-4 py-2">
-        {resources.map((res, index) => (
+        {resourceTypes.map((res, index) => (
           <div key={index} className="flex items-center gap-2">
-            <Checkbox checked={res === resource} onCheckedChange={() => setResource(res)} id={res} />
+            <Checkbox checked={res === resourceType} onCheckedChange={() => setResource(res)} id={res} />
             <label htmlFor={res} className="text-sm">
               {res}
             </label>

@@ -61,12 +61,12 @@ export const categories: Category[] = [
 ];
 
 type CategoryStore = {
-    category: Category | null,
-    setCategory: (category: Category | null) => void
+    category: Category | undefined,
+    setCategory: (category: Category | undefined) => void
 }
 
 const useCategoryStore = create<CategoryStore>((set) => ({
-    category: null,
+    category: undefined,
     setCategory: (category) => set({ category: category })
 }))
 

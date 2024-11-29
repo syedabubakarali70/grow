@@ -11,6 +11,7 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./shared/**/*.{js,ts,jsx,tsx,mdx}",
+    "./features/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   safelist: ["bg-coral", "bg-darkgreen", "bg-darkblue", "bg-lime", "bg-yellow", "bg-lightCoral", "bg-blue"],
   theme: {

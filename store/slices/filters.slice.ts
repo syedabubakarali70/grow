@@ -1,22 +1,22 @@
 import { create } from 'zustand'
 
-export type Resources = 'All Resources' | 'Free' | 'App only'
+export type ResourceTypes = 'All Resources' | 'Free' | 'App only'
 export type FileTypes = 'All Types' | 'Files & Docs' | 'Videos' | 'Music & Sounds'
 
-export const resources: Resources[] = ['All Resources', 'App only', 'Free'];
+export const resourceTypes: ResourceTypes[] = ['All Resources', 'App only', 'Free'];
 export const fileTypes: FileTypes[] = ['All Types', 'Files & Docs', 'Videos', 'Music & Sounds']
 
 type Filters = {
-    resource: Resources,
+    resourceType: ResourceTypes,
     fileType: FileTypes
-    setResource: (resource: Resources) => void,
+    setResource: (resource: ResourceTypes) => void,
     setFileType: (fileType: FileTypes) => void,
 }
 
 const useFiltersStore = create<Filters>((set) => ({
-    resource: 'All Resources',
+    resourceType: 'All Resources',
     fileType: 'All Types',
-    setResource: (resource) => set({ resource: resource }),
+    setResource: (resource) => set({ resourceType: resource }),
     setFileType: (fileType) => set({ fileType: fileType }),
 }))
 

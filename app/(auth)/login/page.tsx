@@ -1,5 +1,5 @@
 import HeroSection from "@/shared/components/Layout/HeroSection"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/shared/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/shared/components/ui/Dialog"
 import Image from "next/image"
 import LoginForm from "@/features/auth/components/LoginForm"
 
@@ -29,11 +29,17 @@ const Page = () => {
               </div>
               <div className="w-0 lg:min-w-[230px]"></div>
               <div className="absolute bottom-0 right-0 hidden items-end gap-[-12px] lg:flex">
-                <Image src="/Meerkat_3.png" width={100} height={200} alt="Meerkat" />
+                <Image src="/images/Meerkats/Meerkat_3.png" width={100} height={200} alt="Meerkat" />
 
                 <div className="relative right-6 flex items-end">
-                  <Image src="/Meerkat_2.png" width={95} height={150} alt="Meerkat" />
-                  <Image src="/Meerkat_1.png" width={70} height={100} alt="Meerkat" className="relative right-4" />
+                  <Image src="/images/Meerkats/Meerkat_2.png" width={95} height={150} alt="Meerkat" />
+                  <Image
+                    src="/images/Meerkats/Meerkat_1.png"
+                    width={70}
+                    height={100}
+                    alt="Meerkat"
+                    className="relative right-4"
+                  />
                 </div>
               </div>
               <DialogDescription />

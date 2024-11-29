@@ -1,5 +1,5 @@
 import HeroSection from "@/shared/components/Layout/HeroSection"
-import { Button } from "@/shared/components/ui/button"
+import { Button } from "@/shared/components/ui/Button"
 import Image from "next/image"
 import Link from "next/link"
 
