@@ -9,7 +9,7 @@ export default function Layout({
   return (
     <>
       <HeroSection />
-      <section className="home-container -top-28">
+      <section className="home-container">
         <SearchBox />
         {children}
       </section>

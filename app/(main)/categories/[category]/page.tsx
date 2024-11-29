@@ -1,6 +1,6 @@
 "use client"
 
-import { LargeScreenFilter, MobileScreenFilter } from "@/shared/components/common/Filter"
+import { LargeScreenFilter, MobileScreenFilter } from "@/features/categories/components/Filter"
 
 import Image from "next/image"
 import ResourceDialog from "@/features/categories/components/ResourceDialog"
@@ -16,7 +16,7 @@ const Page = () => {
   )
 
   return (
-    <div>
+    <>
       <section className="mx-auto flex w-[90%] justify-between gap-4 py-4">
         <LargeScreenFilter />
         <div className="flex w-full flex-col justify-between gap-4">
@@ -38,7 +38,7 @@ const Page = () => {
       <div className="relative h-20 w-full bg-white md:h-32">
         <Image src="/images/ad.png" fill alt="ad" />
       </div>
-    </div>
+    </>
   )
 }
 

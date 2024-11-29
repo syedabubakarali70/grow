@@ -60,8 +60,8 @@ const SearchBox = () => {
             onChange={handleChange}
             placeholder="Enter keywords to search for resources"
           />
-          <Button className="font-poppinsExtraBold text-white" onClick={handleSearchButton}>
-            <Search strokeWidth={4} /> Search
+          <Button className="font-bold" onClick={handleSearchButton}>
+            <Search strokeWidth={3} /> Search
           </Button>
         </div>
       </div>

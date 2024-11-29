@@ -11,6 +11,7 @@ import ResourceCard from "@/features/categories/components/ResourceCard"
 import { Resource } from "@/features/categories/api/categories.type"
 import Image from "next/image"
 import Link from "next/link"
+import { DownloadIcon, ExternalLink } from "lucide-react"
 
 const ResourceDialog = ({ resource }: { resource: Resource }) => {
   return (
@@ -27,30 +28,32 @@ const ResourceDialog = ({ resource }: { resource: Resource }) => {
               Explore fun and imaginative ways to turn simple egg boxes into unique art projects. Get creative with
               paint, scissors, and glue to craft colorful decorations or playful characters!
             </DialogDescription>
-            <div className="flex flex-wrap gap-4">
+            {/* <div className="flex flex-wrap gap-4">
               {resource.labels.map((label, index) => (
                 <div key={index} className="rounded-sm border px-6 py-1 text-sm shadow-sm">
                   {label}
                 </div>
               ))}
-            </div>
+            </div> */}
           </DialogHeader>
 
           <div className="flex w-full flex-col items-center justify-between gap-2 md:flex-row">
             <ResourceCard resource={resource} />
             <div className="flex gap-2">
-              <Button size="icon">
-                <div className="relative h-full w-full">
-                  <Image src="/icons/ui/redirect.svg" fill alt="redirect" />
-                </div>
+              <Button>
+                Share
+                <ExternalLink />
               </Button>
-              <Button>Download</Button>
+              <Button>
+                Download
+                <DownloadIcon />
+              </Button>
             </div>
           </div>
           <hr className="border-black" />
           <div className="flex items-center justify-end gap-2">
             <p>
-              Resources provided by
+              Resources provided by{" "}
               <Link href="#" className="text-blue underline underline-offset-2">
                 Bookdash
               </Link>

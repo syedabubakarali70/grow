@@ -40,7 +40,7 @@ const LoginForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="px-5 pb-4 md:px-4 lg:px-12 lg:pb-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="px-5 py-4 md:px-4 lg:px-12 lg:pb-8">
         <div className="grid grid-cols-2 gap-6">
           {[
             { id: "fname", label: "First Name", placeholder: "Enter First Name", type: "string" },

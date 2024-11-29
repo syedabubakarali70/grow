@@ -28,7 +28,6 @@ export default function Home() {
   return (
     <>
       <HeroSection>
-        <h1 className="text-white">ECD Resource Centre!</h1>
         <p className="font-semibold text-white">Free downloads for preschool owners, managers, teachers and parents.</p>
         <p className="text-white">
           Welcome to the Early Childhood Development (ECD) Resource Centre, a helpful library of free downloadable

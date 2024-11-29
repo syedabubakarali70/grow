@@ -1,4 +1,4 @@
-import { LargeScreenFilter, MobileScreenFilter } from "@/shared/components/common/Filter"
+import { LargeScreenFilter, MobileScreenFilter } from "@/features/categories/components/Filter"
 import CategoriesList from "@/features/categories/components/CategoriesList"
 
 const HomePage = () => {
