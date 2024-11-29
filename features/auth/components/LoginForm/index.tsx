@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { login } from "../../api/auth.api"
 import { LoginData } from "../../api/auth.types"
 import parsePhoneNumberFromString from "libphonenumber-js"
+import { useUserStore } from "@/store"
 
 const FormSchema = z.object({
   fname: z.string().min(1, { message: "First Name is required." }),
@@ -30,11 +31,13 @@ const FormSchema = z.object({
 })
 
 const LoginForm = () => {
+  const { setIsLoggedIn } = useUserStore((state) => state)
   const form = useForm<LoginData>({
     resolver: zodResolver(FormSchema),
   })
 
   const onSubmit = (data: LoginData) => {
+    setIsLoggedIn(true)
     console.log("On submit clicked", data)
     login(data)
   }
