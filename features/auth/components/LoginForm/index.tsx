@@ -35,6 +35,7 @@ const LoginForm = () => {
   })
 
   const onSubmit = (data: LoginData) => {
+    console.log("On submit clicked", data)
     login(data)
   }
 
