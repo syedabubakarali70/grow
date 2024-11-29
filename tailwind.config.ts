@@ -20,7 +20,6 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				// background: 'hsl(var(--background))',
 				background: 'var(--background)',
 				foreground: 'hsl(var(--foreground))',
 				lime: 'var(--lime)',
