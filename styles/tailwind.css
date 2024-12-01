@@ -131,3 +131,7 @@ body {
 #search-input::-webkit-scrollbar {
   display: none;
 }
+
+.overflow-x-scroll::-webkit-scrollbar {
+  display: none;
+}

@@ -22,7 +22,7 @@ const Giraffe = () => {
             width={275}
             height={1000}
             alt=""
-            className={clsx("md:w-[475px] lg:w-[450px]", { "lg:w-[500px]": path === "/login" })}
+            className={clsx("md:w-[475px] lg:w-[440px]", { "w-0 lg:w-[500px]": path === "/login" })}
           />
         </div>
       )}
