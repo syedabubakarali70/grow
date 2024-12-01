@@ -1,3 +1,4 @@
+import { MobileScreenFilter } from "@/features/categories/components/Filter"
 import SearchBox from "@/features/categories/components/SearchBox"
 import HeroSection from "@/shared/components/Layout/HeroSection"
 
@@ -8,11 +9,11 @@ export default function Layout({
 }>) {
   return (
     <>
-      <HeroSection />
-      <section className="home-container">
+      <HeroSection>
         <SearchBox />
-        {children}
-      </section>
+      </HeroSection>
+      <MobileScreenFilter />
+      <section className="home-container">{children}</section>
     </>
   )
 }

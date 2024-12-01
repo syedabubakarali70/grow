@@ -10,16 +10,19 @@ const Giraffe = () => {
     <>
       {(path === "/" || path === "/login") && (
         <div
-          className={clsx("absolute -left-10 bottom-32 z-[-1] hidden md:block lg:bottom-0 xl:-left-20", {
-            "xl:-left-32": path === "/login",
-          })}
+          className={clsx(
+            "absolute bottom-[500px] left-0 z-[-1] sm:bottom-[300px] md:-left-10 md:bottom-32 lg:bottom-0 xl:-left-20",
+            {
+              "xl:-left-32": path === "/login",
+            }
+          )}
         >
           <Image
             src="/icons/ui/Giraffe.svg"
-            width={475}
+            width={275}
             height={1000}
             alt=""
-            className={clsx("lg:w-[450px]", { "lg:w-[500px]": path === "/login" })}
+            className={clsx("md:w-[475px] lg:w-[450px]", { "lg:w-[500px]": path === "/login" })}
           />
         </div>
       )}

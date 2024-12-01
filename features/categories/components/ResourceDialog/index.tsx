@@ -28,13 +28,6 @@ const ResourceDialog = ({ resource }: { resource: Resource }) => {
               Explore fun and imaginative ways to turn simple egg boxes into unique art projects. Get creative with
               paint, scissors, and glue to craft colorful decorations or playful characters!
             </DialogDescription>
-            {/* <div className="flex flex-wrap gap-4">
-              {resource.labels.map((label, index) => (
-                <div key={index} className="rounded-sm border px-6 py-1 text-sm shadow-sm">
-                  {label}
-                </div>
-              ))}
-            </div> */}
           </DialogHeader>
 
           <div className="flex w-full flex-col items-center justify-between gap-2 md:flex-row">

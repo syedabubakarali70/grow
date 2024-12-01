@@ -5,7 +5,7 @@ const SearchBoxContent = () => {
   const { category } = useCategoryStore((state) => state)
   const path = usePathname()
   if (path === "/categories") {
-    return <h2 className="text-center font-poppinsExtraBold">What are you looking for today?</h2>
+    return <h4 className="text-center font-poppinsExtraBold">What are you looking for today?</h4>
   } else {
     return (
       <>

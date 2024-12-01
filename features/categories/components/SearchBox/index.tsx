@@ -33,8 +33,10 @@ const SearchBox = () => {
     inputRef.current?.focus()
   }
   return (
-    <>
-      <div className={`flex items-center gap-2 text-white ${path === "/categories" && "invisible"}`}>
+    <div className="w-full sm:relative sm:-bottom-2">
+      <div
+        className={`flex items-center gap-2 py-4 text-white sm:py-0 sm:pb-4 ${path === "/categories" && "invisible"}`}
+      >
         <Link href={"/categories"}>
           <ArrowLeft />
         </Link>
@@ -45,8 +47,11 @@ const SearchBox = () => {
       <div className="flex w-full flex-col justify-center gap-4 rounded-md bg-white px-4 py-8 shadow-md md:px-12">
         <SearchBoxContent />
         <div className="flex gap-1 overflow-x-auto rounded-md border border-input p-1" id="search-input">
+          <Button onClick={handleSearchButton} variant="ghost" size="icon" className="md:hidden">
+            <Search strokeWidth={3} />
+          </Button>
           {searchTags.map((tag, index) => (
-            <div key={index} className="flex items-center gap-1 pl-2">
+            <div key={index} className="flex items-center gap-1 md:pl-2">
               <p> {tag}</p>
               <Button variant="ghost" size="icon" onClick={() => clearTag(tag)}>
                 <X />
@@ -60,12 +65,12 @@ const SearchBox = () => {
             onChange={handleChange}
             placeholder="Enter keywords to search for resources"
           />
-          <Button className="font-bold" onClick={handleSearchButton}>
+          <Button className="hidden font-bold md:flex" onClick={handleSearchButton}>
             <Search strokeWidth={3} /> Search
           </Button>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

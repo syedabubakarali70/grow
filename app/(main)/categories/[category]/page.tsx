@@ -7,6 +7,7 @@ import ResourceDialog from "@/features/categories/components/ResourceDialog"
 import useFilteredResources from "@/features/categories/hooks/useFilteredResources"
 import usePagination from "@/features/categories/hooks/usePagination"
 import PaginationComponent from "@/features/categories/components/PaginationComponent"
+import Resources from "@/features/categories/components/Resources"
 
 const Page = () => {
   const filteredResources = useFilteredResources()
@@ -17,19 +18,14 @@ const Page = () => {
 
   return (
     <>
-      <section className="mx-auto flex w-[90%] justify-between gap-4 py-4">
+      <section className="mx-auto flex w-[90%] justify-between gap-4 md:pt-32">
         <LargeScreenFilter />
         <div className="flex w-full flex-col justify-between gap-4">
           <div className="flex w-full flex-col gap-2">
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start justify-between gap-4 text-center">
               <p>Click on any of the following resources to view them</p>
-              <MobileScreenFilter />
             </div>
-            <div className="grid w-full grid-cols-1 gap-6 px-4 lg:grid-cols-2">
-              {paginatedItems.map((resource, index) => (
-                <ResourceDialog resource={resource} key={index} />
-              ))}
-            </div>
+            <Resources resources={paginatedItems} />
           </div>
 
           <PaginationComponent currentPage={currentPage} handlePageChange={handlePageChange} totalPages={totalPages} />

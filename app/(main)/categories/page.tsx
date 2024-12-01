@@ -8,7 +8,6 @@ const HomePage = () => {
         <div className="w-full">
           <h2 className="text-center font-poppinsExtraBold">Categories</h2>
         </div>
-        <MobileScreenFilter />
       </div>
       <section className="mx-auto flex w-full items-start justify-center gap-8 xl:w-[90%]">
         <LargeScreenFilter />

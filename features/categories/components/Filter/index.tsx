@@ -2,39 +2,33 @@
 import { Checkbox } from "@/shared/components/ui/Checkbox"
 import { useFiltersStore, useTagsStore, resourceTypes, fileTypes, tags } from "@/store"
 import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/shared/components/ui/Drawer"
-
-import { ListFilter } from "lucide-react"
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/shared/components/ui/Dialog"
 import { Button } from "@/shared/components/ui/Button"
 
 export const MobileScreenFilter = () => {
   return (
-    <Drawer direction="left">
-      <DrawerTrigger className="md:hidden">
-        <ListFilter />
-      </DrawerTrigger>
-      <DrawerContent className="min-h-svh max-w-sm">
-        <DrawerHeader />
-        <DrawerTitle />
-        <DrawerDescription />
-        <Filter />
-        <DrawerFooter>
-          <DrawerClose asChild>
-            <Button variant="outline" className="bg-lime">
-              Close
-            </Button>
-          </DrawerClose>
-        </DrawerFooter>
-      </DrawerContent>
-    </Drawer>
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="custom" className="relative -top-4 self-center bg-lime md:hidden">
+          Filters
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="w-[80%] rounded-lg">
+        <DialogHeader>
+          <DialogTitle />
+          <DialogDescription />
+        </DialogHeader>
+        <div className="flex flex-col">
+          <Filter />
+        </div>
+      </DialogContent>
+    </Dialog>
   )
 }
 

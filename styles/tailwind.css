@@ -114,7 +114,7 @@ body {
     @apply mx-auto w-full max-w-screen-sm px-4 lg:max-w-4xl xl:max-w-5xl !important;
   }
   .home-container {
-    @apply custom-container-lg relative -top-28 flex flex-col gap-4;
+    @apply custom-container-lg flex flex-col gap-4 py-4 md:pt-24;
   }
 }
 
